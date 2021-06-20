@@ -1,0 +1,34 @@
+//Shinchan Loves Coding :))
+#include<bits/stdc++.h>
+ 
+using namespace std;
+
+inline void runn() {
+    #ifndef ONLINE_JUDGE                 
+    freopen("input.txt","r",stdin);   
+    freopen("output.txt","w",stdout);   
+    freopen("error.txt","w",stderr);   
+    #endif                               
+}  
+
+// Auxillary Space => O(n+m)
+// Time Complexity => O((n+m)log(n+m))
+// Space Complexity => O(n+m)
+
+void print(int ar[], int n) {
+	for(int i=0 ; i<n ; i++) cout<<ar[i]<<" ";
+}
+
+int main() { 
+	runn(); 
+	int n;                        
+    cin>>n;
+    int ar[n];
+    for(int i=0 ; i<n ;  i++) cin>>ar[i] ;
+    int best=0 , sum=0 ;
+    for(int i=0 ; i<n ; i++) {
+    	sum=max(ar[i],sum+ar[i]) ;
+    	best=max(best,sum) ;
+    }
+    cout<<best;
+}
