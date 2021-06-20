@@ -1,0 +1,27 @@
+//Shinchan Loves Coding :))
+#include<bits/stdc++.h>
+ 
+using namespace std;
+
+inline void runn() {
+    #ifndef ONLINE_JUDGE                 
+    freopen("input.txt","r",stdin);   
+    freopen("output.txt","w",stdout);   
+    freopen("error.txt","w",stderr);   
+    #endif                               
+}  
+
+// Auxillary Space => O(n)
+// Time Complexity => O(nlogn)
+// Space Complexity => O(n)
+
+int main() { 
+	runn(); 
+	int n,k;                        
+    cin>>n>>k;
+    int ar[n];
+    for(int i=0 ; i<n ;  i++) cin>>ar[i] ;
+    sort(ar,ar+n) ;
+	cout<<"Kth Max : "<<ar[n-k-1]<<"\n";
+	cout<<"Kth Min : "<<ar[k];
+}
