@@ -1,0 +1,90 @@
+//Shinchan Loves Coding :))
+#include<bits/stdc++.h>
+ 
+using namespace std;
+
+inline void runn() {
+    #ifndef ONLINE_JUDGE                 
+    freopen("input.txt","r",stdin);   
+    freopen("output.txt","w",stdout);   
+    freopen("error.txt","w",stderr);   
+    #endif                               
+}  
+
+const int inf=1e9;
+
+// Auxillary Space => O(1)
+// Time Complexity => O(n)
+// Space Complexity => O(n)
+
+void print(int ar[], int n) {
+	for(int i=0 ; i<n ; i++) cout<<ar[i]<<" ";
+}
+
+int main() { 
+	runn(); 
+	int n;
+	cin>>n;
+	int arr[n];
+	for(int i=0 ; i<n ; i++) cin>>arr[i] ;
+	// The number of jumps needed to
+    // reach the starting index is 0
+    if (n <= 1) {
+        cout<<0;
+        return 0;
+    }
+
+    // Return -1 if not possible to jump
+    if (arr[0] == 0) {
+    	cout<<-1;
+        return 0;
+    }
+
+    // initialization
+    // stores all time the maximal
+    // reachable index in the array.
+    int maxReach = arr[0];
+
+    // stores the number of steps
+    // we can still take
+    int step = arr[0];
+
+    // stores the number of jumps
+    // necessary to reach that maximal
+    // reachable position.
+    int jump = 1;
+
+    // Start traversing array
+    int i = 1;
+    for (i = 1; i < n; i++) {
+        // Check if we have reached the end of the array
+        if (i == n - 1) {
+        	cout<<jump;
+            return 0;
+        }
+
+        // updating maxReach
+        maxReach = max(maxReach, i + arr[i]);
+
+        // we use a step to get to the current index
+        step--;
+
+        // If no further steps left
+        if (step == 0) {
+            // we must have used a jump
+            jump++;
+
+            // Check if the current index/position or lesser index
+            // is the maximum reach point from the previous indexes
+            if (i >= maxReach) {
+            	cout<<-1;
+                return 0;
+            }
+
+            // re-initialize the steps to the amount
+            // of steps to reach maxReach from position i.
+            step = maxReach - i;
+        }
+    }
+    cout<<-1;
+}
