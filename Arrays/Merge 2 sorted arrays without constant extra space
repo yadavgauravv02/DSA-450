@@ -1,0 +1,66 @@
+//Shinchan Loves Coding :))
+#include<bits/stdc++.h>
+ 
+using namespace std;
+
+inline void runn() {
+    #ifndef ONLINE_JUDGE                 
+    freopen("input.txt","r",stdin);   
+    freopen("output.txt","w",stdout);   
+    freopen("error.txt","w",stderr);   
+    #endif                               
+}  
+
+const int inf=1e9;
+
+// Auxillary Space => O(1)
+// Time Complexity => O(n+m)
+// Space Complexity => O(n+m)
+
+void print(int ar[], int n) {
+	for(int i=0 ; i<n ; i++) cout<<ar[i]<<" ";
+}
+
+int main() { 
+	runn(); 
+	int n,m;
+	cin>>n>>m;
+	int ar[n+m], br[m];
+	for(int i=0 ; i<n+m ; i++) {
+        if(i<n) cin>>ar[i] ;
+        else ar[i]=0;
+    }
+    for(int i=0 ; i<m ; i++) cin>>br[i] ;
+    int a=0,b=0,i=0;
+    while(a<n && b<m) {
+        int x,y=br[b];
+        if(ar[a]<1000001) x=ar[a];
+        else x=ar[a]%1000001;
+        cerr<<x<<" "<<y<<endl;
+        if(x<=y) {
+            ar[i]+=x*1000001;
+            i++;a++;
+        }
+        else {
+            ar[i]+=y*1000001;
+            b++;i++;
+        }
+    }
+    while(a<n) {
+        int x;
+        if(ar[a]<1000001) x=ar[a];
+        else x=ar[a]%1000001;
+        ar[i]+=x*1000001 ; 
+        i++ ;
+        a++ ;
+    }
+    while(b<m) {
+        int y=br[b] ;
+        ar[i]+=y*1000001;
+        i++ ;
+        b++ ; 
+    }
+    for(int i=0 ; i<n+m ; i++) {
+        cout<<(ar[i]/1000001)<<" ";
+    }
+}
