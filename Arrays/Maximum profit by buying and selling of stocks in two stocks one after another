@@ -1,0 +1,46 @@
+//Shinchan Loves Coding :))
+#include<bits/stdc++.h>
+ 
+using namespace std;
+
+inline void runn() {
+    #ifndef ONLINE_JUDGE                 
+    freopen("input.txt","r",stdin);   
+    freopen("output.txt","w",stdout);   
+    freopen("error.txt","w",stderr);   
+    #endif                               
+}  
+
+const int inf=1e9;
+
+// Auxillary Space => O(n)
+// Time Complexity => O(n)
+// Space Complexity => O(n)
+
+void print(int ar[], int n) {
+	for(int i=0 ; i<n ; i++) cout<<ar[i]<<" ";
+}
+
+int main() { 
+	runn(); 
+	int n;
+	cin>>n;
+    int ar[n] ;
+    for(int i=0 ; i<n ; i++) cin>>ar[i] ;
+    int minl[n],maxl[n],minr[n],maxr[n] ;
+    minl[0]=ar[0] ;maxl[0]=ar[0] ;
+    for(int i=1 ; i<n ; i++) {
+        minl[i]=min(minl[i-1],ar[i]) ;
+        maxl[i]=max(maxl[i-1],ar[i]) ;
+    }
+    minr[n-1]=ar[n-1] ;maxr[n-1]=ar[n-1] ;
+    for(int i=n-2 ; i>=0 ; i--) {
+        minr[i]=min(minr[i+1],ar[i]) ;
+        maxr[i]=max(maxr[i+1],ar[i]) ;
+    }
+    int ans=-inf;
+    for(int i=1 ; i<n-2 ; i++) {
+        ans=max({ans,maxl[i]-minl[i-1]+maxr[i+2]-minr[i+1]});
+    }
+    cout<<ans;
+}
