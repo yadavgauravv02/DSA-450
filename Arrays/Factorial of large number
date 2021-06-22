@@ -13,8 +13,8 @@ inline void runn() {
 
 const int inf=1e9;
 
-// Auxillary Space => O(1)
-// Time Complexity => O(nlogn)
+// Auxillary Space => O(n)
+// Time Complexity => O(n)
 // Space Complexity => O(n)
 
 void calc(int n, vector<int> &ans) {
