@@ -1,0 +1,50 @@
+//Shinchan Loves Coding :))
+#include<bits/stdc++.h>
+ 
+using namespace std;
+
+inline void runn() {
+    #ifndef ONLINE_JUDGE                 
+    freopen("input.txt","r",stdin);   
+    freopen("output.txt","w",stdout);   
+    freopen("error.txt","w",stderr);   
+    #endif                               
+}  
+
+const int inf=1e9;
+
+// Auxillary Space => O(1)
+// Time Complexity => O(n)
+// Space Complexity => O(n)
+
+void print(int ar[], int n) {
+	for(int i=0 ; i<n ; i++) cout<<ar[i]<<" ";
+}
+
+int main() { 
+	runn(); 
+	int n,m;
+    cin>>n;
+    int ar[n],a,b;
+    for(int i=0 ; i<n ; i++) cin>>ar[i] ;
+    cin>>a>>b;
+    int x=0;
+    for(int i=0 ; i<n ; i++){
+        while(ar[x]<a && x<n) {
+            x++;
+        }
+        if(ar[i]<a && i>x) {
+            swap(ar[i],ar[x]);
+        }
+    }
+    x=0;
+    for(int i=0 ; i<n; i++) {
+        while(ar[x]<=b) {
+            x++;
+        }
+        if(ar[i]<=b && i>x) {
+            swap(ar[i],ar[x]);
+        }
+    }
+    print(ar,n) ;
+}
