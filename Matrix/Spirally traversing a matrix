@@ -1,0 +1,79 @@
+//Shinchan Loves Coding :))
+#include<bits/stdc++.h>
+ 
+using namespace std;
+
+inline void runn() {
+    #ifndef ONLINE_JUDGE                 
+    freopen("input.txt","r",stdin);   
+    freopen("output.txt","w",stdout);   
+    freopen("error.txt","w",stderr);   
+    #endif                               
+}  
+
+const int inf=1e9;
+
+// Auxillary Space => O(1)
+// Time Complexity => O(n)
+// Space Complexity => O(n)
+
+void print(int ar[], int n) {
+	for(int i=0 ; i<n ; i++) cout<<ar[i]<<" ";
+}
+
+int main() { 
+	runn(); 
+    int t=1;
+   // cin>>t;
+    while(t--) {
+	    int r,c;
+        cin>>r>>c;
+        int mat[r+1][c+1] ;
+        for(int i=1 ; i<=r  ; i++) {
+            for(int j=1 ; j<=c ; j++) {
+                cin>>mat[i][j] ;
+            }
+        }
+        int x1=1,y1=r,x2=1,y2=c;
+        int total=r*c;
+        int ltrx=1,ltry=c;
+        int rtlx=c,rtly=1;
+        int tobx=1,toby=r;
+        int botx=r,boty=1;
+        while(total>0) {
+            for(int i=ltrx ; i<=ltry ; i++) {
+                cout<<mat[x1][i]<<" ";
+                total--;
+                if(total==0) break;
+            }
+            cerr<<total<<" ";
+            if(total==0) break;
+            ltrx++;ltry--;
+            for(int i=tobx+1 ; i<=toby ; i++) {
+                cout<<mat[i][y2]<<" ";
+                total--;
+                if(total==0) break;
+            }
+            cerr<<total<<" ";
+            if(total==0) break;
+            tobx++;toby--;
+            for(int i=rtlx-1 ; i>=rtly ; i--) {
+                cout<<mat[y1][i]<<" ";
+                total--;
+                if(total==0) break;
+            }
+            cerr<<total<<" ";
+            if(total==0) break;
+            rtlx--;rtly++;
+            for(int i=botx-1 ; i>=boty+1 ; i--) {
+                cout<<mat[i][x2]<<" ";
+                total--;
+                if(total==0) break;
+            }
+            cerr<<total<<endl;
+            rtlx--;rtly++;
+            x1++;y1--;
+            x2++;y2--;
+        }
+    }
+}
