@@ -14,7 +14,7 @@ inline void runn() {
 const int inf=1e9;
 
 // Auxillary Space => O(1)
-// Time Complexity => O(log(R*log(C)))
+// Time Complexity => O(R+C)
 // Space Complexity => O(R*C)
 
 int main() { 
