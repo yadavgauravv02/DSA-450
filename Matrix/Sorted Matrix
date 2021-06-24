@@ -1,0 +1,53 @@
+//Shinchan Loves Coding :))
+#include<bits/stdc++.h>
+ 
+using namespace std;
+
+inline void runn() {
+    #ifndef ONLINE_JUDGE                 
+    freopen("input.txt","r",stdin);   
+    freopen("output.txt","w",stdout);   
+    freopen("error.txt","w",stderr);   
+    #endif                               
+}  
+
+const int inf=1e9;
+
+// Auxillary Space => O(1)
+// Time Complexity => O(log(R*log(C)))
+// Space Complexity => O(R*C)
+
+int main() { 
+	runn(); 
+    int t=1;
+   // cin>>t;
+    while(t--) {
+	    int n, m;
+        cin >> n >> m;
+        int mat[n][m] ;
+        vector<int> v;
+        for(int i=0 ; i<n ; i++) {
+            for(int j=0 ; j<m ; j++) {
+                cin>>mat[i][j] ;
+                v.push_back(mat[i][j]) ;
+            }
+        }
+        sort(v.begin(),v.end()) ;
+        int a=0,b=0;
+        for(int i=0 ; i<n*m ; i++) {
+            mat[a][b]=v[i];
+            if(i%m==m-1) {
+                a++;b=0;
+            }
+            else {
+                b++;
+            }
+        }
+        for(int i=0 ; i<n ; i++) {
+            for(int j=0 ; j<m ; j++) {
+                cout<<mat[i][j]<<" ";
+            }
+            cout<<endl;
+        }
+    }
+}
