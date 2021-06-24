@@ -1,0 +1,75 @@
+//Shinchan Loves Coding :))
+#include<bits/stdc++.h>
+ 
+using namespace std;
+
+inline void runn() {
+    #ifndef ONLINE_JUDGE                 
+    freopen("input.txt","r",stdin);   
+    freopen("output.txt","w",stdout);   
+    freopen("error.txt","w",stderr);   
+    #endif                               
+}  
+
+const int inf=1e9;
+
+// Auxillary Space => O(1)
+// Time Complexity => O(log(R*log(C)))
+// Space Complexity => O(R*C)
+
+void print(int ar[], int n) {
+	for(int i=0 ; i<n ; i++) cout<<ar[i]<<" ";
+}
+
+int ck(int e, int c, int r, int mat[][c]) {
+    int k=(r*c)/2,cnt=0,p=0;
+    for(int i=0 ; i<r ; i++) {
+        int x=0,y=c-1,z=-1;
+        while(x<=y) {
+            int mid=(x+y)/2;
+            if(mat[i][mid]<=e) x=mid+1 , z=mid;
+            else if(mat[i][mid]>e) y=mid-1;
+        }
+        z++;
+        cnt+=z+1;z--;
+        while(mat[i][z]==e && z>=0) {
+            p++;
+            z--;
+        }
+    }
+    if(cnt<k || (cnt>k && (cnt-p)<k)) return 0;
+    else if(cnt<k) return -1;
+    else return 1;
+}
+
+int main() { 
+	runn(); 
+    int t=1;
+   // cin>>t;
+    while(t--) {
+	    int r,c,ele;
+        cin>>r>>c;
+        int mat[r][c], mn=3000, mx=-1;
+        for(int i=0 ; i<r ; i++) {
+            for(int j=0 ; j<c ; j++) {
+                cin>>mat[i][j] ;
+                mn=min(mn,mat[i][j]) ;
+                mx=max(mx,mat[i][j]) ;
+            }
+        }
+        bool f=0;
+        while(mn<=mx) {
+            int mid=(mx+mn)/2;
+            int k=ck(mid,c,r,mat[r][c]) ;
+            if(!k) {
+                f=1;cout<<mid; break;
+            }
+            else if(k==1) {
+                mx=mid-1;
+            }
+            else {
+                mn=mid+1;
+            }
+        } 
+    }
+}
