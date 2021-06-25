@@ -1,0 +1,29 @@
+Problem Link-https://leetcode.com/problems/count-and-say/
+
+class Solution {
+public:
+    
+    string count(int n) {
+        if(n==1) return "1" ;
+        string k=count(n-1);
+        vector<pair<char,int>> v;
+     //   cout<<k<<" ";
+        for(int i=0 ; i<k.size() ; i++) {
+            if(!(v.size()) || v.back().first!=k[i]) v.push_back({k[i],1});
+            else v.back().second++;
+        }
+        string ans="";
+        for(auto ii : v) {
+       //     cout<<ii.first<<" "<<ii.second<<endl;
+            ans+=(char)(ii.second+'0');
+            ans+=ii.first;
+        }
+      //  cout<<n<<" "<<ans<<endl;
+        return ans;
+    }
+    
+    string countAndSay(int n) {
+        string ans=count(n) ;
+        return ans;
+    }
+};
