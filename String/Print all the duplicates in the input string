@@ -1,0 +1,11 @@
+Problem Link-https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/
+
+void printfrequency(char str[] , int n) {
+    map<char,int> mapp ;
+    for(int i=0 ; i<n;  i++) {
+        mapp[str[i]]++;
+    }
+    for(auto ii : mapp) {
+        cout<<ii.fi<<" "<<ii.se<<en;
+    }
+}
