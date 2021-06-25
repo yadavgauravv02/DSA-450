@@ -1,0 +1,17 @@
+Problem Link : https://practice.geeksforgeeks.org/problems/palindrome-string0817/1
+
+int isPlaindrome(char S[]) {
+    int x=0;
+    for(int i=0 ; i<100000 ; i++) {
+        if(S[i]>='a' && S[i]<='z') x++;
+        else break;
+    }
+    int a=0,b=x-1;
+    while(a<b) {
+        if(S[a]!=S[b]) {
+            return 0;
+        }
+        a++;b--;
+    }
+    return 1;
+}
