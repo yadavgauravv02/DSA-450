@@ -1,0 +1,10 @@
+void prints(string s, int n, string ans) {
+    if(n==0) {
+        reverse(ans.begin(),ans.end());
+        cout<<ans<<"\n";
+        return ;
+    }
+    prints(s,n-1,ans);
+    ans+=s[n-1];
+    prints(s,n-1,ans);
+}
