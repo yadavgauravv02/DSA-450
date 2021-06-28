@@ -1,0 +1,18 @@
+long long countTriplets(long long ar[], int n, long long sum)
+	{
+	    sort(ar,ar+n) ;
+	    int ans=0;
+	    for(int i=0 ; i<n-2 ; i++) {
+	        for(int j=i+1 ; j<n-1 ; j++) {
+	            int a=j+1 , b=n-1;
+	            int k=sum-ar[i]-ar[j],z=j ;
+	            while(a<=b) {
+	                int mid=(a+b)/2;
+	                if(ar[mid]<k) z=mid , a=mid+1;
+	                else b=mid-1;
+	            }
+	            ans+=(z-j); 
+	        }
+	    }
+	    return ans;
+	}
